@@ -102,7 +102,7 @@ def strings(
               f"{input_file.get("display_name")}.{encoding_name}_strings"
           ),
       )
-      base_command = [
+      command = [
           "strings",
           "-a",
           "-t",
@@ -113,7 +113,7 @@ def strings(
       ]
 
       with open(output_file.path, "w") as fh:
-        process = subprocess.Popen(base_command, stdout=fh)
+        process = subprocess.Popen(command, stdout=fh)
         start_time = datetime.now()
         update_interval_s = 3
 
