@@ -91,6 +91,7 @@ def strings(
 
     telemetry.add_attribute_to_current_span("input_files", input_files)
     telemetry.add_attribute_to_current_span("task_config", task_config)
+    telemetry.add_attribute_to_current_span("workflow_id", workflow_id)
 
     for encoding_name, unused_encoding_enabled in task_config.items():
         if encoding_name not in StringsEncoding.__members__:
