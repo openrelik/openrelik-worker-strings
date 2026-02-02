@@ -1,22 +1,24 @@
-[tool.poetry]
+[project]
 name = "openrelik-worker-strings"
 version = "0.2.1"
 description = "Extract strings from files"
-authors = ["Johan Berggren <jberggren@gmail.com>"]
-license = "Apache 2.0"
+authors = [{ name = "Johan Berggren", email = "jberggren@gmail.com" }]
+requires-python = ">=3.11,<4"
 readme = "README.md"
-package-mode = false
+license = "Apache 2.0"
+dependencies = [
+    "celery[redis]>=5.4.0,<6",
+    "openrelik-worker-common>=0.17.1",
+    "openrelik-common>=0.7.3",
+]
 
-[tool.poetry.dependencies]
-python = "^3.11"
-celery = { extras = ["redis"], version = "^5.4.0" }
-openrelik-worker-common = "^0.17.1"
-openrelik-common = "^0.7.3"
+[dependency-groups]
+test = ["pytest", "pytest-cov>=5.0.0,<6"]
 
-[tool.poetry.group.test.dependencies]
-pytest = "*"
-pytest-cov = "^5.0.0"
+[tool.uv]
+package = false
+default-groups = ["test"]
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["uv_build>=0.9.0,<0.10.0"]
+build-backend = "uv_build"

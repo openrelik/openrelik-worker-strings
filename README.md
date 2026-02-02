@@ -14,3 +14,8 @@ openrelik-worker-strings:
       - /path/to/your/artifacts:/path/to/your/artifacts
     command: "celery --app=src.app worker --task-events --concurrency=4 --loglevel=INFO -Q openrelik-worker-strings"
 ```
+ ## Test
+ ```
+uv sync --group test
+uv run pytest -s --cov=.
+```
